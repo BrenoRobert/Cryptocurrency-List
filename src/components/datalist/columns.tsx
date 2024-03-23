@@ -1,10 +1,11 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { ICoinList } from '@/interface/ICoinList';
+import { ICoinsList } from '@/interface/ICoinsList';
 import { Button } from '../ui/button';
 import { CaretSortIcon } from '@radix-ui/react-icons';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { usdFormat } from '@/utils/usd_format';
 
-export const columns: ColumnDef<ICoinList>[] = [
+export const columns: ColumnDef<ICoinsList>[] = [
   {
     accessorKey: 'top',
     header: ({ column }) => {
@@ -45,12 +46,12 @@ export const columns: ColumnDef<ICoinList>[] = [
     header: () => <div className="text-right mr-2">Preço</div>,
     cell: ({ row }) => {
       const current_price = parseFloat(row.getValue('current_price'));
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(current_price);
 
-      return <div className="text-right font-normal mr-2">{formatted}</div>;
+      return (
+        <div className="text-right font-normal mr-2">
+          {usdFormat(current_price)}
+        </div>
+      );
     },
   },
   {
@@ -60,12 +61,12 @@ export const columns: ColumnDef<ICoinList>[] = [
     ),
     cell: ({ row }) => {
       const market_cap = parseFloat(row.getValue('market_cap'));
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(market_cap);
 
-      return <div className="text-right font-normal mr-2">{formatted}</div>;
+      return (
+        <div className="text-right font-normal mr-2">
+          {usdFormat(market_cap)}
+        </div>
+      );
     },
   },
 ];
