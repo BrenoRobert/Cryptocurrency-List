@@ -1,4 +1,4 @@
-export interface ICoinList {
+export interface ICoinsList {
   id: string;
   symbol: string;
   name: string;
@@ -25,4 +25,5 @@ export interface ICoinList {
   atl_date: string;
   roi: null;
   last_updated: string;
+  top: number;
 }

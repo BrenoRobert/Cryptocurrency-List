@@ -1,12 +1,11 @@
 import { DataTable } from './data-table';
 import { columns } from './columns';
-import { ICoinList } from '@/interface/ICoinList';
+import { ICoin } from '@/interface/ICoinsList';
 
 type DataListProps = {
-  data: ICoinList[];
+  data: ICoin[];
 };
 
 export const DataList = ({ data }: DataListProps) => {
-
   return <DataTable data={data} columns={columns} />;
 };

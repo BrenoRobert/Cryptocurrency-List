@@ -13,18 +13,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { ICoinList } from '@/interface/ICoinList';
+import { ICoin } from '@/interface/ICoin';
 import { Link } from 'react-router-dom';
 
-interface DataTableProps<ICoinList, TValue> {
-  columns: ColumnDef<ICoinList, TValue>[];
-  data: ICoinList[];
+interface DataTableProps<ICoin, TValue> {
+  columns: ColumnDef<ICoin, TValue>[];
+  data: ICoin[];
 }
 
 export function DataTable<TValue>({
   columns,
   data,
-}: DataTableProps<ICoinList, TValue>) {
+}: DataTableProps<ICoin, TValue>) {
   const table = useReactTable({
     data,
     columns,
@@ -61,7 +61,7 @@ export function DataTable<TValue>({
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
-                    <Link to={`coin/${row.original.id}`}>
+                    <Link to={`${row.original.id}/coin`}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
