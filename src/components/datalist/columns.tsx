@@ -1,24 +1,12 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ICoinsList } from '@/interface/ICoinsList';
-import { Button } from '../ui/button';
-import { CaretSortIcon } from '@radix-ui/react-icons';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { usdFormat } from '@/utils/usd_format';
 
 export const columns: ColumnDef<ICoinsList>[] = [
   {
     accessorKey: 'top',
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-        >
-          Top
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: () => <div className="ml-4">Top</div>,
     cell: ({ row }) => {
       return <div className="pl-6 font-medium">{row.getValue('top')}</div>;
     },
